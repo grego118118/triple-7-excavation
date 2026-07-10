@@ -1,12 +1,12 @@
-/* ============ Base ============ */
+﻿/* ============ Base ============ */
 :root {
   --ink: #1a1c1e;
   --ink-soft: #43484d;
   --paper: #f6f5f2;
   --white: #ffffff;
-  --orange: #e8720c;
-  --orange-dark: #c95f05;
-  --yellow: #f5b52e;
+  --gold: #e2a028;
+  --gold-dark: #c4841a;
+  --yellow: #f0b64a;
   --charcoal: #22262a;
   --charcoal-deep: #16191c;
   --line: #e3e0da;
@@ -44,7 +44,7 @@ h2 { font-size: clamp(2rem, 4.5vw, 2.9rem); margin-bottom: 1.6rem; }
   letter-spacing: 0.22em;
   font-weight: 600;
   font-size: 0.9rem;
-  color: var(--orange);
+  color: var(--gold);
   margin-bottom: 0.5rem;
 }
 .section-sub { color: var(--ink-soft); margin: -0.8rem 0 1.6rem; }
@@ -67,8 +67,9 @@ section { padding: 5rem 0; }
   transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
 .btn:hover { transform: translateY(-2px); }
-.btn-orange { background: var(--orange); color: var(--white); }
-.btn-orange:hover { background: var(--orange-dark); }
+.header-cta { white-space: nowrap; }
+.btn-gold { background: var(--gold); color: var(--charcoal-deep); }
+.btn-gold:hover { background: var(--yellow); }
 .btn-outline { border-color: var(--white); color: var(--white); }
 .btn-outline:hover { background: var(--white); color: var(--charcoal-deep); }
 
@@ -78,7 +79,7 @@ section { padding: 5rem 0; }
   top: 0;
   z-index: 50;
   background: var(--charcoal-deep);
-  border-bottom: 3px solid var(--orange);
+  border-bottom: 3px solid var(--gold);
 }
 .header-inner {
   display: flex;
@@ -94,7 +95,7 @@ section { padding: 5rem 0; }
   color: var(--white);
   margin-right: auto;
 }
-.brand-logo { height: 48px; width: auto; }
+.brand-logo { height: 52px; width: auto; border-radius: 6px; }
 .brand-text {
   font-family: var(--font-head);
   font-weight: 700;
@@ -174,7 +175,7 @@ section { padding: 5rem 0; }
 
 /* ============ Trustbar ============ */
 .trustbar {
-  background: var(--orange);
+  background: var(--gold);
   padding: 1.4rem 0;
 }
 .trustbar-inner {
@@ -189,9 +190,9 @@ section { padding: 5rem 0; }
   text-transform: uppercase;
   font-size: 1.2rem;
   letter-spacing: 0.05em;
-  color: var(--white);
+  color: var(--charcoal-deep);
 }
-.trust-item span { color: rgba(255,255,255,0.85); font-size: 0.9rem; }
+.trust-item span { color: rgba(22,25,28,0.75); font-size: 0.9rem; }
 
 /* ============ Services ============ */
 .services-grid {
@@ -202,7 +203,7 @@ section { padding: 5rem 0; }
 .service-card {
   background: var(--white);
   border: 1px solid var(--line);
-  border-top: 4px solid var(--orange);
+  border-top: 4px solid var(--gold);
   border-radius: var(--radius);
   padding: 1.6rem;
   box-shadow: var(--shadow);
@@ -349,13 +350,13 @@ section { padding: 5rem 0; }
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--orange);
+  color: var(--gold);
   font-size: 1.4rem;
   font-weight: 700;
 }
 .faq-item[open] summary::after { content: "\2212"; }
 .faq-item p { color: var(--ink-soft); padding-top: 0.7rem; font-size: 0.97rem; }
-.faq-item a { color: var(--orange-dark); }
+.faq-item a { color: var(--gold-dark); }
 
 /* ============ Contact ============ */
 .contact { background: var(--charcoal-deep); color: var(--white); }
@@ -380,7 +381,7 @@ section { padding: 5rem 0; }
   display: block;
   background: var(--charcoal);
   border: 1px solid #31373d;
-  border-left: 4px solid var(--orange);
+  border-left: 4px solid var(--gold);
   border-radius: var(--radius);
   padding: 1.1rem 1.3rem;
   text-decoration: none;
@@ -430,8 +431,8 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
 }
 .form-field input:focus,
 .form-field textarea:focus {
-  outline: 2px solid var(--orange);
-  border-color: var(--orange);
+  outline: 2px solid var(--gold);
+  border-color: var(--gold);
 }
 .form-submit { justify-self: start; border: 0; }
 
@@ -513,7 +514,7 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
   .gtile.featured { grid-column: span 2; }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 980px) {
   .site-nav {
     display: none;
     position: absolute;
@@ -524,10 +525,13 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
     flex-direction: column;
     padding: 1rem 4%;
     gap: 0.9rem;
-    border-bottom: 3px solid var(--orange);
+    border-bottom: 3px solid var(--gold);
   }
   .site-nav.open { display: flex; }
   .nav-toggle { display: flex; }
+}
+
+@media (max-width: 700px) {
   .header-cta { display: none; }
   .services-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
