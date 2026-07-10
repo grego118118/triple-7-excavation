@@ -27,6 +27,8 @@ body {
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
+::selection { background: var(--gold); color: var(--charcoal-deep); }
+section[id] { scroll-margin-top: 84px; }
 
 .container { width: min(1120px, 92%); margin: 0 auto; }
 
@@ -37,6 +39,16 @@ h1, h2, h3 {
   letter-spacing: 0.015em;
 }
 h2 { font-size: clamp(2rem, 4.5vw, 2.9rem); margin-bottom: 1.6rem; }
+section > .container > h2::after,
+.about-text h2::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin-top: 0.6rem;
+  background: var(--gold);
+  border-radius: 2px;
+}
 
 .section-kicker {
   font-family: var(--font-head);
@@ -142,10 +154,12 @@ section { padding: 5rem 0; }
 /* ============ Hero ============ */
 .hero {
   background:
-    linear-gradient(100deg, rgba(22,25,28,0.94) 32%, rgba(22,25,28,0.55) 68%, rgba(22,25,28,0.65)),
+    linear-gradient(100deg, rgba(22,25,28,0.97) 28%, rgba(22,25,28,0.72) 55%, rgba(22,25,28,0.30) 82%, rgba(22,25,28,0.45)),
+    linear-gradient(rgba(22,25,28,0) 70%, rgba(22,25,28,0.85)),
     var(--charcoal-deep) url('assets/excavator-branded-rear.jpg') center right / cover no-repeat;
   color: var(--white);
-  padding: 7.5rem 0;
+  padding: 8.5rem 0;
+  border-bottom: 4px solid var(--gold);
 }
 .hero-inner {
   display: grid;
@@ -159,8 +173,29 @@ section { padding: 5rem 0; }
   color: var(--yellow);
   margin-bottom: 0.8rem;
 }
-.hero h1 { font-size: clamp(2.8rem, 7vw, 4.6rem); margin-bottom: 1.2rem; }
-.hero-sub { color: #c4cad0; max-width: 34rem; margin-bottom: 1.8rem; font-size: 1.08rem; }
+.hero h1 { font-size: clamp(3rem, 7.5vw, 5.2rem); margin-bottom: 1.2rem; text-shadow: 0 3px 18px rgba(0,0,0,0.55); }
+.hero h1 .accent { color: var(--gold); }
+.hero-sub { color: #d3d8dd; max-width: 30rem; margin-bottom: 1.4rem; font-size: 1.12rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.hero-pills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: 32rem;
+  margin-bottom: 1.8rem;
+}
+.hero-pills li {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--yellow);
+  border: 1px solid rgba(240, 182, 74, 0.45);
+  background: rgba(22, 25, 28, 0.55);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem;
+}
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-bottom: 1.4rem; }
 .hero-contact { color: #9aa3ab; font-size: 0.95rem; }
 .hero-contact a { color: var(--yellow); text-decoration: none; }
@@ -200,6 +235,11 @@ section { padding: 5rem 0; }
   border-radius: var(--radius);
   padding: 1.6rem;
   box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(22, 25, 28, 0.16);
 }
 .service-card h3 { font-size: 1.35rem; margin-bottom: 0.6rem; }
 .service-card p { color: var(--ink-soft); font-size: 0.97rem; }
@@ -434,6 +474,26 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
   border-color: var(--gold);
 }
 .form-submit { justify-self: start; border: 0; }
+
+/* ============ CTA band ============ */
+.cta-band {
+  background:
+    linear-gradient(90deg, rgba(22,25,28,0.96) 40%, rgba(22,25,28,0.72)),
+    var(--charcoal-deep) url('assets/excavator-branded-rear.jpg') center 35% / cover no-repeat;
+  border-top: 4px solid var(--gold);
+  color: var(--white);
+  padding: 3.5rem 0;
+}
+.cta-band-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.cta-band h2 { margin-bottom: 0.4rem; }
+.cta-band p { color: #c4cad0; }
+.cta-band .btn { font-size: 1.2rem; padding: 1rem 2rem; white-space: nowrap; }
 
 /* ============ Footer ============ */
 .site-footer {
