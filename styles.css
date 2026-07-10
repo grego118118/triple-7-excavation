@@ -376,6 +376,12 @@ section { padding: 5rem 0; }
   gap: 2rem;
   align-items: start;
 }
+.contact-grid-cards { grid-template-columns: 1fr; justify-items: center; }
+.contact-grid-cards .contact-side {
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+.contact-cta { font-size: 1.2rem; padding: 1rem 2.2rem; }
 .contact-side { display: grid; gap: 1rem; }
 .contact-card {
   display: block;
@@ -537,6 +543,7 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
   .process-grid { grid-template-columns: 1fr; }
   .trustbar-inner { grid-template-columns: repeat(2, 1fr); }
   .form-row { grid-template-columns: 1fr; }
+  .contact-grid-cards .contact-side { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: 1fr; }
   .gtile.featured { grid-column: span 1; }
 }

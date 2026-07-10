@@ -23,15 +23,6 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// Contact form: send users back here after submitting, show a thank-you
-const nextField = document.querySelector('input[name="_next"]');
-nextField.value = location.origin + location.pathname + '?sent=1#contact';
-if (new URLSearchParams(location.search).has('sent')) {
-  const banner = document.querySelector('.form-success');
-  banner.hidden = false;
-  document.querySelector('#contact').scrollIntoView();
-}
-
 // Gallery lightbox
 const tiles = [...document.querySelectorAll('.gallery .gtile')];
 const lightbox = document.querySelector('.lightbox');
