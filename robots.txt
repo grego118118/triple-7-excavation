@@ -1,4 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-Sitemap: https://triple-7-excavation.vercel.app/sitemap.xml
+Sitemap: https://triple-7-excavation-kvmm.vercel.app/sitemap.xml
