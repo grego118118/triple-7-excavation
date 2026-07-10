@@ -276,6 +276,38 @@ section { padding: 5rem 0; }
   padding: 0.15rem 0.7rem;
 }
 
+/* ============ Before / After ============ */
+.ba-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+.ba {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.ba img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+.ba figcaption {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  background: var(--charcoal-deep);
+  color: var(--yellow);
+  border-radius: 4px;
+  padding: 0.25rem 0.7rem;
+}
+
 /* ============ Gallery ============ */
 .work { background: var(--charcoal); color: var(--white); }
 .work .section-kicker { color: var(--yellow); }
@@ -414,7 +446,15 @@ section { padding: 5rem 0; }
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
 }
-.contact-cta { font-size: 1.2rem; padding: 1rem 2.2rem; }
+.contact-cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; }
+.contact-cta { font-size: 1.15rem; padding: 1rem 2rem; }
+.towns {
+  margin-top: 1.8rem;
+  text-align: center;
+  color: #8a939b;
+  font-size: 0.92rem;
+  max-width: 44rem;
+}
 .contact-side { display: grid; gap: 1rem; }
 .contact-card {
   display: block;
@@ -551,6 +591,27 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
 .lb-next { right: 0.6rem; top: 50%; transform: translateY(-50%); font-size: 3.4rem; }
 .lb-close:hover, .lb-prev:hover, .lb-next:hover { color: var(--yellow); }
 
+/* ============ Mobile call bar ============ */
+.callbar {
+  display: none;
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 90;
+  grid-template-columns: 1fr 1fr;
+}
+.callbar a {
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 1.1rem;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.95rem 0;
+}
+.callbar a:first-child { background: var(--gold); color: var(--charcoal-deep); }
+.callbar a:last-child { background: var(--charcoal-deep); color: var(--yellow); border-top: 1px solid #31373d; }
+
 /* ============ Reveal ============ */
 .reveal {
   opacity: 0;
@@ -595,6 +656,9 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
 
 @media (max-width: 700px) {
   .header-cta { display: none; }
+  .callbar { display: grid; }
+  body { padding-bottom: 52px; }
+  .ba img { aspect-ratio: 3 / 3.4; }
   .services-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
   .trustbar-inner { grid-template-columns: repeat(2, 1fr); }

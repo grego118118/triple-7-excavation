@@ -11,6 +11,8 @@
 <meta property="og:image" content="https://triple-7-excavation.vercel.app/assets/excavator-branded-rear.jpg">
 <meta property="og:url" content="https://triple-7-excavation.vercel.app/">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://triple-7-excavation.vercel.app/">
+<link rel="apple-touch-icon" href="assets/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -30,8 +32,23 @@
     "postalCode": "01007",
     "addressCountry": "US"
   },
-  "areaServed": "Belchertown MA and surrounding Western Massachusetts",
+  "areaServed": ["Belchertown MA", "Amherst MA", "Ludlow MA", "Palmer MA", "Ware MA", "Granby MA", "South Hadley MA", "Wilbraham MA", "Monson MA", "Hadley MA", "Springfield MA", "Northampton MA"],
+  "knowsAbout": ["demolition", "excavation", "land clearing", "pool excavation", "grading", "drainage", "septic excavation", "driveways"],
+  "url": "https://triple-7-excavation.vercel.app/",
   "image": "https://triple-7-excavation.vercel.app/assets/logo.jpg"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "How much does excavation work cost?", "acceptedAnswer": {"@type": "Answer", "text": "Every site is different — access, soil, ledge, and how much material has to move all factor in. Estimates are free: we look at the actual job and give you a real number."}},
+    {"@type": "Question", "name": "Do I need to call Dig Safe first?", "acceptedAnswer": {"@type": "Answer", "text": "We handle that. Utility mark-out gets scheduled before any digging starts."}},
+    {"@type": "Question", "name": "How big a job will you take on?", "acceptedAnswer": {"@type": "Answer", "text": "From a weekend-sized drainage fix to a full pool dig, demolition, or site prep for new construction."}},
+    {"@type": "Question", "name": "Do you work in the winter?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — frost and snow don't shut us down. Foundation digs, egress windows, and emergency drainage work happen year-round."}},
+    {"@type": "Question", "name": "What about my lawn and landscaping?", "acceptedAnswer": {"@type": "Answer", "text": "We plan machine access before we start and keep the footprint as tight as the job allows. The site gets graded and cleaned up when we're done."}}
+  ]
 }
 </script>
 </head>
@@ -76,7 +93,7 @@
         <a href="#work" class="btn btn-outline">See Our Work</a>
       </div>
       <p class="hero-contact">
-        Call or text <a href="tel:4133209238">(413) 320-9238</a> · Belchertown, MA
+        <a href="tel:4133209238">(413) 320-9238</a> · <a href="sms:4133209238">Text us</a> · Belchertown, MA
       </p>
     </div>
   </div>
@@ -140,7 +157,10 @@
     </article>
 
     <article class="project-card reveal">
-      <img src="assets/demo-shed-after.jpg" alt="Demolished shed debris staged next to a roll-off dumpster" loading="lazy">
+      <div class="ba-pair">
+        <figure class="ba"><img src="assets/demo-shed-before.jpg" alt="Old collapsing shed before demolition" loading="lazy"><figcaption>Before</figcaption></figure>
+        <figure class="ba"><img src="assets/demo-shed-after.jpg" alt="Shed demolished and debris staged for haul-off" loading="lazy"><figcaption>After</figcaption></figure>
+      </div>
       <div class="project-text">
         <h3>Structure Demolition &amp; Cleanout</h3>
         <p class="project-tags"><span>Demolition</span><span>Haul-Off</span><span>Site Cleanup</span></p>
@@ -278,7 +298,11 @@
           <span class="contact-value">Belchertown &amp; surrounding areas</span>
         </div>
       </div>
-      <a href="tel:4133209238" class="btn btn-gold contact-cta">Call (413) 320-9238 for a Free Estimate</a>
+      <div class="contact-cta-row">
+        <a href="tel:4133209238" class="btn btn-gold contact-cta">Call (413) 320-9238</a>
+        <a href="sms:4133209238" class="btn btn-outline contact-cta">Text Us for an Estimate</a>
+      </div>
+      <p class="towns">Proudly serving Belchertown · Amherst · Ludlow · Palmer · Ware · Granby · South Hadley · Wilbraham · Monson · Hadley · Northampton &amp; surrounding Western Mass towns</p>
     </div>
   </div>
 </section>
@@ -301,6 +325,11 @@
     </span>
   </div>
 </footer>
+
+<div class="callbar">
+  <a href="tel:4133209238">Call Now</a>
+  <a href="sms:4133209238">Text Us</a>
+</div>
 
 <div class="lightbox" hidden>
   <button class="lb-close" aria-label="Close">&times;</button>
