@@ -11,7 +11,7 @@
   --charcoal-deep: #16191c;
   --line: #e3e0da;
   --radius: 10px;
-  --shadow: 0 10px 30px rgba(22, 25, 28, 0.10);
+  --shadow: 0 2px 6px rgba(22, 25, 28, 0.05), 0 14px 34px rgba(22, 25, 28, 0.09);
   --font-head: "Barlow Condensed", sans-serif;
   --font-body: "Inter", sans-serif;
 }
@@ -29,6 +29,7 @@ img { max-width: 100%; display: block; }
 a { color: inherit; }
 ::selection { background: var(--gold); color: var(--charcoal-deep); }
 section[id] { scroll-margin-top: 84px; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
 .container { width: min(1120px, 92%); margin: 0 auto; }
 
@@ -61,7 +62,7 @@ section > .container > h2::after,
 }
 .section-sub { color: var(--ink-soft); margin: -0.8rem 0 1.6rem; }
 
-section { padding: 5rem 0; }
+section { padding: 5.5rem 0; }
 
 /* ============ Buttons ============ */
 .btn {
@@ -133,8 +134,21 @@ section { padding: 5rem 0; }
   letter-spacing: 0.08em;
   font-weight: 500;
   font-size: 1rem;
+  position: relative;
+  padding: 0.2rem 0;
 }
-.site-nav a:hover { color: var(--yellow); }
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -2px;
+  height: 2px;
+  background: var(--gold);
+  transition: right 0.22s ease;
+}
+.site-nav a:hover { color: var(--white); }
+.site-nav a:hover::after { right: 0; }
 .nav-toggle {
   display: none;
   background: none;
@@ -203,8 +217,9 @@ section { padding: 5rem 0; }
 
 /* ============ Trustbar ============ */
 .trustbar {
-  background: var(--gold);
-  padding: 1.4rem 0;
+  background: var(--charcoal);
+  border-bottom: 1px solid #2c3136;
+  padding: 1.6rem 0;
 }
 .trustbar-inner {
   display: grid;
@@ -212,15 +227,17 @@ section { padding: 5rem 0; }
   gap: 1rem;
   text-align: center;
 }
+.trust-item { border-left: 1px solid #31373d; }
+.trust-item:first-child { border-left: 0; }
 .trust-item strong {
   display: block;
   font-family: var(--font-head);
   text-transform: uppercase;
-  font-size: 1.2rem;
-  letter-spacing: 0.05em;
-  color: var(--charcoal-deep);
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  color: var(--gold);
 }
-.trust-item span { color: rgba(22,25,28,0.75); font-size: 0.9rem; }
+.trust-item span { color: #9aa3ab; font-size: 0.88rem; }
 
 /* ============ Services ============ */
 .services-grid {
@@ -231,16 +248,28 @@ section { padding: 5rem 0; }
 .service-card {
   background: var(--white);
   border: 1px solid var(--line);
-  border-top: 4px solid var(--gold);
   border-radius: var(--radius);
-  padding: 1.6rem;
+  padding: 1.9rem 1.7rem;
   box-shadow: var(--shadow);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 .service-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(22, 25, 28, 0.16);
+  border-color: var(--gold);
+  box-shadow: 0 4px 10px rgba(22, 25, 28, 0.06), 0 22px 44px rgba(22, 25, 28, 0.13);
 }
+.service-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #fdf4e3, #f7e7c6);
+  border: 1px solid #eeddb8;
+  color: var(--gold-dark);
+  margin-bottom: 1.1rem;
+}
+.service-icon svg { width: 26px; height: 26px; }
 .service-card h3 { font-size: 1.35rem; margin-bottom: 0.6rem; }
 .service-card p { color: var(--ink-soft); font-size: 0.97rem; }
 
@@ -352,9 +381,20 @@ section { padding: 5rem 0; }
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 1.6rem;
+  padding: 1.7rem 1.6rem;
   box-shadow: var(--shadow);
+  position: relative;
 }
+.process-step::after {
+  content: "";
+  position: absolute;
+  top: 2.9rem;
+  right: -1.4rem;
+  width: 1.4rem;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--gold) 0 5px, transparent 5px 9px);
+}
+.process-step:last-child::after { display: none; }
 .step-num {
   display: inline-grid;
   place-items: center;
@@ -539,17 +579,36 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
 .site-footer {
   background: #101214;
   color: #8a939b;
-  padding: 1.4rem 0;
-  font-size: 0.9rem;
+  padding: 3.5rem 0 0;
+  font-size: 0.93rem;
 }
-.footer-inner {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  justify-content: space-between;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr 1fr;
+  gap: 2.5rem;
+  padding-bottom: 2.5rem;
 }
-.footer-links a { color: #c4cad0; text-decoration: none; }
-.footer-links a:hover { color: var(--yellow); }
+.footer-brand img { height: 64px; width: auto; border-radius: 6px; margin-bottom: 0.9rem; }
+.footer-brand p { max-width: 26rem; line-height: 1.7; }
+.site-footer h4 {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 0.9rem;
+}
+.footer-nav, .footer-contact { display: flex; flex-direction: column; gap: 0.45rem; align-items: flex-start; }
+.footer-nav a, .footer-contact a { color: #c4cad0; text-decoration: none; }
+.footer-nav a:hover, .footer-contact a:hover { color: var(--yellow); }
+.footer-contact span { color: #8a939b; }
+.footer-bottom {
+  border-top: 1px solid #24282c;
+  padding-top: 1.1rem;
+  padding-bottom: 1.3rem;
+  font-size: 0.85rem;
+}
 
 /* ============ Lightbox ============ */
 .lightbox {
@@ -622,6 +681,8 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
 
 /* ============ Responsive ============ */
 @media (max-width: 920px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+  .process-step::after { display: none; }
   .hero {
     background:
       linear-gradient(rgba(22,25,28,0.82), rgba(22,25,28,0.88)),
@@ -659,6 +720,7 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
   .callbar { display: grid; }
   body { padding-bottom: 52px; }
   .ba img { aspect-ratio: 3 / 3.4; }
+  .trust-item { border-left: 0; }
   .services-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
   .trustbar-inner { grid-template-columns: repeat(2, 1fr); }
