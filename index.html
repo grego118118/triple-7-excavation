@@ -13,10 +13,11 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://triple-7-excavation-kvmm.vercel.app/">
 <link rel="apple-touch-icon" href="assets/logo.jpg">
+<link rel="preload" as="image" href="assets/excavator-branded-rear.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=2">
 <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
 <script type="application/ld+json">
 {
@@ -194,21 +195,28 @@
     <p class="section-kicker">Our Work</p>
     <h2>Project Gallery</h2>
     <p class="section-sub">Tap any photo for a closer look.</p>
+    <div class="gallery-filters" role="group" aria-label="Filter gallery">
+      <button class="gfilter active" data-filter="all">All Work</button>
+      <button class="gfilter" data-filter="pools">Pools</button>
+      <button class="gfilter" data-filter="demo">Demolition</button>
+      <button class="gfilter" data-filter="flatwork">Driveways &amp; Patios</button>
+      <button class="gfilter" data-filter="clearing">Clearing &amp; Digs</button>
+    </div>
     <div class="gallery">
-      <figure class="gtile featured"><img src="assets/pool-install-stone-surround.jpg" alt="In-ground pool with stone surround and terraced hardscape" loading="lazy"><figcaption>In-ground pool install with stone surround</figcaption></figure>
-      <figure class="gtile"><img src="assets/pool-site-graded.jpg" alt="Pool site excavated and graded with stone base" loading="lazy"><figcaption>Pool site — dug, graded &amp; stoned</figcaption></figure>
-      <figure class="gtile"><img src="assets/pool-hardscape-steps.jpg" alt="Terraced hardscape steps taking shape around the pool" loading="lazy"><figcaption>Terraced hardscape taking shape</figcaption></figure>
-      <figure class="gtile"><img src="assets/driveway-paved-finished.jpg" alt="Finished asphalt driveway to a garage" loading="lazy"><figcaption>Finished driveway, loamed &amp; graded edges</figcaption></figure>
-      <figure class="gtile"><img src="assets/driveway-asphalt-roller.jpg" alt="Roller compacting fresh asphalt driveway" loading="lazy"><figcaption>Fresh pavement getting rolled</figcaption></figure>
-      <figure class="gtile featured"><img src="assets/foundation-trench-dig.jpg" alt="Foundation trench excavated along a house" loading="lazy"><figcaption>Foundation dig, cut clean to the wall</figcaption></figure>
-      <figure class="gtile"><img src="assets/foundation-egress-winter.jpg" alt="Egress window well set beside a foundation in winter" loading="lazy"><figcaption>Egress dig — we work year-round</figcaption></figure>
-      <figure class="gtile"><img src="assets/demo-shed-before.jpg" alt="Old collapsing shed before demolition" loading="lazy"><figcaption>Demo day: before</figcaption></figure>
-      <figure class="gtile"><img src="assets/demo-shed-after.jpg" alt="Shed demolished and debris staged for haul-off" loading="lazy"><figcaption>Demo day: down &amp; ready for haul-off</figcaption></figure>
-      <figure class="gtile"><img src="assets/excavator-shrub-removal.jpg" alt="Mini excavator removing shrubs beside a garage" loading="lazy"><figcaption>Shrub &amp; stump removal</figcaption></figure>
-      <figure class="gtile"><img src="assets/excavator-yard-clearing.jpg" alt="Mini excavator clearing brush in a backyard" loading="lazy"><figcaption>Backyard clearing</figcaption></figure>
-      <figure class="gtile"><img src="assets/walkway-crew-finishing.jpg" alt="Crew finishing a new concrete walkway" loading="lazy"><figcaption>New walkway going in</figcaption></figure>
-      <figure class="gtile"><img src="assets/patio-pad-backyard.jpg" alt="New concrete patio pad behind a house" loading="lazy"><figcaption>Backyard patio pad, formed &amp; poured</figcaption></figure>
-      <figure class="gtile featured"><img src="assets/yard-regrade-finished.jpg" alt="Finished yard regrade with fresh lawn" loading="lazy"><figcaption>Full yard regrade, finished &amp; seeded</figcaption></figure>
+      <figure class="gtile featured" data-cat="pools"><img src="assets/pool-install-stone-surround.jpg" alt="In-ground pool with stone surround and terraced hardscape" loading="lazy"><figcaption>In-ground pool install with stone surround</figcaption></figure>
+      <figure class="gtile" data-cat="pools"><img src="assets/pool-site-graded.jpg" alt="Pool site excavated and graded with stone base" loading="lazy"><figcaption>Pool site — dug, graded &amp; stoned</figcaption></figure>
+      <figure class="gtile" data-cat="pools"><img src="assets/pool-hardscape-steps.jpg" alt="Terraced hardscape steps taking shape around the pool" loading="lazy"><figcaption>Terraced hardscape taking shape</figcaption></figure>
+      <figure class="gtile" data-cat="flatwork"><img src="assets/driveway-paved-finished.jpg" alt="Finished asphalt driveway to a garage" loading="lazy"><figcaption>Finished driveway, loamed &amp; graded edges</figcaption></figure>
+      <figure class="gtile" data-cat="flatwork"><img src="assets/driveway-asphalt-roller.jpg" alt="Roller compacting fresh asphalt driveway" loading="lazy"><figcaption>Fresh pavement getting rolled</figcaption></figure>
+      <figure class="gtile featured" data-cat="clearing"><img src="assets/foundation-trench-dig.jpg" alt="Foundation trench excavated along a house" loading="lazy"><figcaption>Foundation dig, cut clean to the wall</figcaption></figure>
+      <figure class="gtile" data-cat="clearing"><img src="assets/foundation-egress-winter.jpg" alt="Egress window well set beside a foundation in winter" loading="lazy"><figcaption>Egress dig — we work year-round</figcaption></figure>
+      <figure class="gtile" data-cat="demo"><img src="assets/demo-shed-before.jpg" alt="Old collapsing shed before demolition" loading="lazy"><figcaption>Demo day: before</figcaption></figure>
+      <figure class="gtile" data-cat="demo"><img src="assets/demo-shed-after.jpg" alt="Shed demolished and debris staged for haul-off" loading="lazy"><figcaption>Demo day: down &amp; ready for haul-off</figcaption></figure>
+      <figure class="gtile" data-cat="clearing"><img src="assets/excavator-shrub-removal.jpg" alt="Mini excavator removing shrubs beside a garage" loading="lazy"><figcaption>Shrub &amp; stump removal</figcaption></figure>
+      <figure class="gtile" data-cat="clearing"><img src="assets/excavator-yard-clearing.jpg" alt="Mini excavator clearing brush in a backyard" loading="lazy"><figcaption>Backyard clearing</figcaption></figure>
+      <figure class="gtile" data-cat="flatwork"><img src="assets/walkway-crew-finishing.jpg" alt="Crew finishing a new concrete walkway" loading="lazy"><figcaption>New walkway going in</figcaption></figure>
+      <figure class="gtile" data-cat="flatwork"><img src="assets/patio-pad-backyard.jpg" alt="New concrete patio pad behind a house" loading="lazy"><figcaption>Backyard patio pad, formed &amp; poured</figcaption></figure>
+      <figure class="gtile featured" data-cat="clearing"><img src="assets/yard-regrade-finished.jpg" alt="Finished yard regrade with fresh lawn" loading="lazy"><figcaption>Full yard regrade, finished &amp; seeded</figcaption></figure>
     </div>
   </div>
 </section>
@@ -315,6 +323,9 @@
         <a href="sms:4133209238" class="btn btn-outline contact-cta">Text Us for an Estimate</a>
       </div>
       <p class="towns">Proudly serving Belchertown · Amherst · Ludlow · Palmer · Ware · Granby · South Hadley · Wilbraham · Monson · Hadley · Northampton &amp; surrounding Western Mass towns</p>
+      <div class="map-card">
+        <iframe src="https://maps.google.com/maps?q=Belchertown,+MA&z=10&output=embed" title="Triple 7 Excavation service area — Belchertown, MA" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -368,10 +379,13 @@
   <figure>
     <img src="" alt="">
     <figcaption></figcaption>
+    <span class="lb-count"></span>
   </figure>
   <button class="lb-next" aria-label="Next photo">&#8250;</button>
 </div>
 
-<script src="script.js"></script>
+<button class="to-top" aria-label="Back to top" hidden>&#8593;</button>
+
+<script src="script.js?v=2"></script>
 </body>
 </html>

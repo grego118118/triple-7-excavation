@@ -12,6 +12,34 @@ siteNav.querySelectorAll('a').forEach(a =>
   })
 );
 
+// Header shrink + back-to-top on scroll
+const header = document.querySelector('.site-header');
+const toTop = document.querySelector('.to-top');
+let scrollTick = false;
+function onScroll() {
+  if (scrollTick) return;
+  scrollTick = true;
+  requestAnimationFrame(() => {
+    const y = window.scrollY || document.documentElement.scrollTop;
+    header.classList.toggle('scrolled', y > 40);
+    toTop.hidden = y < 600;
+    scrollTick = false;
+  });
+}
+document.addEventListener('scroll', onScroll, { passive: true, capture: true });
+onScroll();
+toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Gallery filters
+const filterBtns = [...document.querySelectorAll('.gfilter')];
+filterBtns.forEach(btn => btn.addEventListener('click', () => {
+  filterBtns.forEach(b => b.classList.toggle('active', b === btn));
+  const cat = btn.dataset.filter;
+  document.querySelectorAll('.gallery .gtile').forEach(tile => {
+    tile.classList.toggle('gtile-hidden', cat !== 'all' && tile.dataset.cat !== cat);
+  });
+}));
+
 // Scroll-reveal
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -28,15 +56,25 @@ const tiles = [...document.querySelectorAll('.gallery .gtile')];
 const lightbox = document.querySelector('.lightbox');
 const lbImg = lightbox.querySelector('img');
 const lbCaption = lightbox.querySelector('figcaption');
+const lbCount = lightbox.querySelector('.lb-count');
 let current = 0;
 
+function visibleTiles() {
+  const vis = tiles.filter(t => !t.classList.contains('gtile-hidden'));
+  return vis.length ? vis : tiles;
+}
+
 function showTile(i) {
-  current = (i + tiles.length) % tiles.length;
-  const img = tiles[current].querySelector('img');
-  const cap = tiles[current].querySelector('figcaption');
+  const vis = visibleTiles();
+  current = (i + vis.length) % vis.length;
+  const img = vis[current].querySelector('img');
+  const cap = vis[current].querySelector('figcaption');
+  lbImg.classList.remove('lb-in');
   lbImg.src = img.src;
   lbImg.alt = img.alt;
   lbCaption.textContent = cap ? cap.textContent : '';
+  lbCount.textContent = (current + 1) + ' / ' + vis.length;
+  requestAnimationFrame(() => lbImg.classList.add('lb-in'));
 }
 
 function openLightbox(i) {
@@ -50,7 +88,7 @@ function closeLightbox() {
   document.body.style.overflow = '';
 }
 
-tiles.forEach((tile, i) => tile.addEventListener('click', () => openLightbox(i)));
+tiles.forEach(tile => tile.addEventListener('click', () => openLightbox(visibleTiles().indexOf(tile))));
 lightbox.querySelector('.lb-close').addEventListener('click', closeLightbox);
 lightbox.querySelector('.lb-prev').addEventListener('click', e => { e.stopPropagation(); showTile(current - 1); });
 lightbox.querySelector('.lb-next').addEventListener('click', e => { e.stopPropagation(); showTile(current + 1); });

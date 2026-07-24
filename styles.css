@@ -94,12 +94,17 @@ section { padding: 5.5rem 0; }
   background: var(--charcoal-deep);
   border-bottom: 3px solid var(--gold);
 }
+.site-header { transition: box-shadow 0.25s ease; }
+.site-header.scrolled { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); }
 .header-inner {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   padding: 0.65rem 0;
+  transition: padding 0.25s ease;
 }
+.site-header.scrolled .header-inner { padding: 0.3rem 0; }
+.site-header.scrolled .brand-logo { height: 42px; }
 .brand {
   display: flex;
   align-items: center;
@@ -108,7 +113,7 @@ section { padding: 5.5rem 0; }
   color: var(--white);
   margin-right: auto;
 }
-.brand-logo { height: 52px; width: auto; border-radius: 6px; }
+.brand-logo { height: 52px; width: auto; border-radius: 6px; transition: height 0.25s ease; }
 .brand-text {
   font-family: var(--font-head);
   font-weight: 700;
@@ -167,13 +172,33 @@ section { padding: 5.5rem 0; }
 
 /* ============ Hero ============ */
 .hero {
-  background:
-    linear-gradient(100deg, rgba(22,25,28,0.97) 28%, rgba(22,25,28,0.72) 55%, rgba(22,25,28,0.30) 82%, rgba(22,25,28,0.45)),
-    linear-gradient(rgba(22,25,28,0) 70%, rgba(22,25,28,0.85)),
-    var(--charcoal-deep) url('assets/excavator-branded-rear.jpg') center right / cover no-repeat;
+  position: relative;
+  overflow: hidden;
+  background: var(--charcoal-deep);
   color: var(--white);
   padding: 8.5rem 0;
   border-bottom: 4px solid var(--gold);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('assets/excavator-branded-rear.jpg') center right / cover no-repeat;
+  animation: heroZoom 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(100deg, rgba(22,25,28,0.97) 28%, rgba(22,25,28,0.72) 55%, rgba(22,25,28,0.30) 82%, rgba(22,25,28,0.45)),
+    linear-gradient(rgba(22,25,28,0) 70%, rgba(22,25,28,0.85));
+}
+.hero-inner { position: relative; z-index: 1; }
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
 }
 .hero-inner {
   display: grid;
@@ -341,11 +366,38 @@ section { padding: 5.5rem 0; }
 .work { background: var(--charcoal); color: var(--white); }
 .work .section-kicker { color: var(--yellow); }
 .work .section-sub { color: #aab2b9; }
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.6rem;
+}
+.gfilter {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #aab2b9;
+  background: transparent;
+  border: 1px solid #3a4148;
+  border-radius: 999px;
+  padding: 0.45rem 1.2rem;
+  cursor: pointer;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+.gfilter:hover { color: var(--yellow); border-color: var(--gold); }
+.gfilter.active {
+  color: var(--charcoal-deep);
+  background: var(--gold);
+  border-color: var(--gold);
+}
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
+.gtile-hidden { display: none; }
 .gtile {
   position: relative;
   border-radius: var(--radius);
@@ -461,6 +513,11 @@ section { padding: 5.5rem 0; }
 }
 .faq-item[open] summary::after { content: "\2212"; }
 .faq-item p { color: var(--ink-soft); padding-top: 0.7rem; font-size: 0.97rem; }
+.faq-item[open] p { animation: faqIn 0.28s ease; }
+@keyframes faqIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
 .faq-item a { color: var(--gold-dark); }
 
 /* ============ Contact ============ */
@@ -494,6 +551,20 @@ section { padding: 5.5rem 0; }
   color: #8a939b;
   font-size: 0.92rem;
   max-width: 44rem;
+}
+.map-card {
+  margin-top: 2rem;
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #31373d;
+}
+.map-card iframe {
+  display: block;
+  width: 100%;
+  height: 320px;
+  border: 0;
+  filter: grayscale(0.5) contrast(0.95);
 }
 .contact-side { display: grid; gap: 1rem; }
 .contact-card {
@@ -633,8 +704,19 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
   max-height: 78vh;
   object-fit: contain;
   border-radius: 6px;
+  opacity: 0;
+  transform: scale(0.985);
+  transition: opacity 0.22s ease, transform 0.22s ease;
 }
+.lightbox img.lb-in { opacity: 1; transform: none; }
 .lightbox figcaption { color: #c4cad0; text-align: center; font-size: 0.95rem; }
+.lb-count {
+  text-align: center;
+  color: #8a939b;
+  font-family: var(--font-head);
+  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+}
 .lb-close, .lb-prev, .lb-next {
   position: absolute;
   background: none;
@@ -671,6 +753,26 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
 .callbar a:first-child { background: var(--gold); color: var(--charcoal-deep); }
 .callbar a:last-child { background: var(--charcoal-deep); color: var(--yellow); border-top: 1px solid #31373d; }
 
+/* ============ Back to top ============ */
+.to-top {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 80;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--gold);
+  color: var(--charcoal-deep);
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+.to-top:hover { transform: translateY(-3px); background: var(--yellow); }
+
 /* ============ Reveal ============ */
 .reveal {
   opacity: 0;
@@ -683,11 +785,8 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
 @media (max-width: 920px) {
   .footer-grid { grid-template-columns: 1fr; gap: 1.8rem; }
   .process-step::after { display: none; }
-  .hero {
-    background:
-      linear-gradient(rgba(22,25,28,0.82), rgba(22,25,28,0.88)),
-      var(--charcoal-deep) url('assets/excavator-branded-rear.jpg') center / cover no-repeat;
-  }
+  .hero::before { background-position: center; }
+  .hero::after { background: linear-gradient(rgba(22,25,28,0.82), rgba(22,25,28,0.88)); }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .process-grid { grid-template-columns: repeat(2, 1fr); }
   .about-inner { grid-template-columns: 1fr; }
@@ -721,6 +820,13 @@ a.contact-card:hover .contact-value { color: var(--yellow); }
   body { padding-bottom: 52px; }
   .ba img { aspect-ratio: 3 / 3.4; }
   .trust-item { border-left: 0; }
+  .to-top { bottom: 64px; right: 0.9rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before { animation: none; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
   .services-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
   .trustbar-inner { grid-template-columns: repeat(2, 1fr); }
